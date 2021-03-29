@@ -25,3 +25,79 @@ Best regards
 
 John
 CEO
+
+
+
+
+*************************
+## Application technology stack
+[![Maven](./anycompany/src/main/resources/images/maven.png)](https://http://maven.apache.org/guides/)
+[![Springboot](./anycompany/src/main/resources/images/spring-boot.jpg)](https://spring.io/guides)
+[![H2](./anycompany/src/main/resources/images/h2-logo-2.png)](http://h2database.com/html/quickstart.html)
+[![Swagger](./anycompany/src/main/resources/images/swagger.png)](https://swagger.io/docs/)
+[![Java](./anycompany/src/main/resources/images/java8.jpg)](https://docs.oracle.com/en/java/javase/08/)
+
+
+This is a service to enable customers to place orders and map orders for each customer. Functionality available is to 
+pull all the orders per customer.
+
+## Example of the customer orders retrieved from the service
+
+To interact with the application using Swagger UI interface, you can use this 
+URL: http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+ 
+To view H2 Database you can any database navigation tool or the following 
+URL: http://localhost:8080/h2-console
+
+<strong>Incoming Request</strong>
+```js 
+curl -X GET "http://localhost:8080/api/customer/v1/findAllCustomersOrders" -H  "accept: */*"
+```
+<strong>Outgoing Response</strong>
+```json5
+
+[
+  {
+    "name": "Wanted",
+    "surname": "Lepota",
+    "orders": [
+      {
+        "amount": 1500,
+        "vat": 15
+      }
+    ]
+  }
+]
+
+```
+## Configuration profiles
+
+* application.properties    (local development configuration)
+
+```
+## How to run the project using maven on local environment
+
+```shell
+mvn spring-boot:run
+```
+## Building and running the Spring Boot application on local environment
+
+To build the executable jar you can execute the following command:
+
+```shell
+mvn clean package
+```
+The executable jar is located in the target/anycompany-1.0.jar directory and you can run it by executing the following command:
+
+```shell
+java -jar target/anycompany-1.0.jar
+```
+________________________________________________________________________________
+Maintainers: <br>
+* [@WantedLepota](https://github.com/MrWanted/TechTestJava)
+
+Contributors: <br>
+* https://github.com/MrWanted/TechTestJava/graphs/contributors
+
+
+

@@ -1,6 +1,6 @@
 package za.co.anycompany.datalayer;
 
-import za.co.anycompany.model.Customer;
+import za.co.anycompany.entity.Customer;
 
 import java.sql.*;
 

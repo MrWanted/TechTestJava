@@ -1,28 +1,15 @@
 package za.co.anycompany.service;
 
-import za.co.anycompany.datalayer.CustomerRepository;
-import za.co.anycompany.datalayer.OrderRepository;
-import za.co.anycompany.model.Customer;
-import za.co.anycompany.model.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import za.co.anycompany.entity.Customer;
+import za.co.anycompany.entity.CustomerOrder;
 
-public class OrderService {
+import java.util.Collection;
 
-    private OrderRepository orderRepository = new OrderRepository();
+@Repository
+public interface OrderService extends JpaRepository<CustomerOrder, Long> {
+    CustomerOrder findByCustomer(Customer customer);
 
-    public boolean placeOrder(Order order, int customerId)
-    {
-        Customer customer = CustomerRepository.load(customerId);
-
-        if (order.getAmount() == 0)
-            return false;
-
-        if (customer.getCountry() == "UK")
-            order.setVAT(0.2d);
-        else
-            order.setVAT(0);
-
-        orderRepository.save(order);
-
-        return true;
-    }
+    Collection<CustomerOrder> findAllByCustomer(Customer customer);
 }
